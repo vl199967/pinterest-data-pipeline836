@@ -1,1 +1,11 @@
 pinterest readme hello
+
+Pinterest Datapipeline Project 
+
+
+
+File structure:
+On the AWS EC2 instance under the home directory we have the kafka 
+
+Locally we have the PINTEREST-DATA-PIPELINE836 folder which contains: user_posting_emulation.py which emulates real user posts, the README, 
+and a .gitignore file which ignores the virtual env and key credentials from being committed to github.
