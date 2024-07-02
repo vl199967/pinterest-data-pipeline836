@@ -1,3 +1,4 @@
 db_creds.yaml
 .venv/
 12ae4bb638bf-key-pair.pem
+ec2-user@ec2-3-89-64-160.compute-1.amazonaws.com

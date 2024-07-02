@@ -9,3 +9,7 @@ On the AWS EC2 instance under the home directory we have the kafka
 
 Locally we have the PINTEREST-DATA-PIPELINE836 folder which contains: user_posting_emulation.py which emulates real user posts, the README, 
 and a .gitignore file which ignores the virtual env and key credentials from being committed to github.
+
+
+In this project we build a data pipeline similar to the one used by pinterest to derive useful insights from user generated data. 
+The overall flow of data in this project goes as follows: 1. An API sends data to out MSK cluster, which is meant to simulate the process of ingesting and processing streamed data in real time. The consumer of this MSK cluster is a S3 bucket, where the streamed user data goes to and get stored. This is meant to simulate a data warehouse/storage. Then we use Spark on Databricks to process the user data to derive certain insights that drive business decisions. 

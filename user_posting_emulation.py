@@ -47,22 +47,35 @@ def run_infinite_post_data_loop():
             
             for row in pin_selected_row:
                 pin_result = dict(row._mapping)
+                pin_payload = json.dumps(pin_result, default=str)
+                headers = {'Content-Type': 'application/vnd.kafka.json.v2+json'}
+                response = requests.request("POST", creds.get('PIN_INVOKE'), headers=headers, data=pin_payload)
+
 
             geo_string = text(f"SELECT * FROM geolocation_data LIMIT {random_row}, 1")
             geo_selected_row = connection.execute(geo_string)
             
             for row in geo_selected_row:
                 geo_result = dict(row._mapping)
+                geo_payload = json.dumps(geo_result, default=str)
+                headers = {'Content-Type': 'application/vnd.kafka.json.v2+json'}
+                response = requests.request("POST", creds.get('GEO_INVOKE'), headers=headers, data=geo_payload)
 
             user_string = text(f"SELECT * FROM user_data LIMIT {random_row}, 1")
             user_selected_row = connection.execute(user_string)
             
             for row in user_selected_row:
                 user_result = dict(row._mapping)
+                user_payload = json.dumps(user_result, default=str)
+                headers = {'Content-Type': 'application/vnd.kafka.json.v2+json'}
+                response = requests.request("POST", creds.get('USER_INVOKE'), headers=headers, data=user_payload)
             
             print(pin_result)
+            print(response.status_code)
             print(geo_result)
+            print(response.status_code)
             print(user_result)
+            print(response.status_code)
 
 
 if __name__ == "__main__":
